@@ -23,6 +23,8 @@ final class ItemCoordinator: NavigationCoordinatable {
 	var library = makeLibrary
 	@Route(.modal)
 	var itemOverview = makeItemOverview
+    @Route(.modal)
+    var castSelector = makeCastSelector
 	@Route(.fullScreen)
 	var videoPlayer = makeVideoPlayer
 
@@ -43,6 +45,10 @@ final class ItemCoordinator: NavigationCoordinatable {
 	func makeItemOverview(item: BaseItemDto) -> NavigationViewCoordinator<ItemOverviewCoordinator> {
 		NavigationViewCoordinator(ItemOverviewCoordinator(item: itemDto))
 	}
+    
+    func makeCastSelector() -> NavigationViewCoordinator<CastSelectorCoordinator> {
+        NavigationViewCoordinator(CastSelectorCoordinator())
+    }
 
 	func makeVideoPlayer(viewModel: VideoPlayerViewModel) -> NavigationViewCoordinator<VideoPlayerCoordinator> {
 		NavigationViewCoordinator(VideoPlayerCoordinator(viewModel: viewModel))
@@ -52,4 +58,17 @@ final class ItemCoordinator: NavigationCoordinatable {
 	func makeStart() -> some View {
 		ItemNavigationView(item: itemDto)
 	}
+}
+
+final class CastSelectorCoordinator: NavigationCoordinatable {
+
+    let stack = NavigationStack(initial: \CastSelectorCoordinator.start)
+
+    @Root
+    var start = makeStart
+    
+    @ViewBuilder
+    func makeStart() -> some View {
+        CastSelectorView()
+    }
 }

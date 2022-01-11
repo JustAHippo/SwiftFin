@@ -331,6 +331,8 @@
 		E173DA5026D048D600CC4EB7 /* ServerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E173DA4F26D048D600CC4EB7 /* ServerDetailView.swift */; };
 		E173DA5226D04AAF00CC4EB7 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E173DA5126D04AAF00CC4EB7 /* ColorExtension.swift */; };
 		E173DA5426D050F500CC4EB7 /* ServerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E173DA5326D050F500CC4EB7 /* ServerDetailViewModel.swift */; };
+		E176DE69278DE582001EFD8D /* ChromecastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176DE68278DE582001EFD8D /* ChromecastManager.swift */; };
+		E176DE6B278E1761001EFD8D /* CastSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176DE6A278E1761001EFD8D /* CastSelectorView.swift */; };
 		E178857D278037FD0094FBCF /* JellyfinAPI in Frameworks */ = {isa = PBXBuildFile; productRef = E178857C278037FD0094FBCF /* JellyfinAPI */; };
 		E178859B2780F1F40094FBCF /* tvOSSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178859A2780F1F40094FBCF /* tvOSSlider.swift */; };
 		E178859E2780F53B0094FBCF /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178859D2780F53B0094FBCF /* SliderView.swift */; };
@@ -698,6 +700,8 @@
 		E173DA4F26D048D600CC4EB7 /* ServerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerDetailView.swift; sourceTree = "<group>"; };
 		E173DA5126D04AAF00CC4EB7 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		E173DA5326D050F500CC4EB7 /* ServerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerDetailViewModel.swift; sourceTree = "<group>"; };
+		E176DE68278DE582001EFD8D /* ChromecastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromecastManager.swift; sourceTree = "<group>"; };
+		E176DE6A278E1761001EFD8D /* CastSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastSelectorView.swift; sourceTree = "<group>"; };
 		E178859A2780F1F40094FBCF /* tvOSSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tvOSSlider.swift; sourceTree = "<group>"; };
 		E178859D2780F53B0094FBCF /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		E178859F2780F55C0094FBCF /* tvOSVLCOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tvOSVLCOverlay.swift; sourceTree = "<group>"; };
@@ -1436,6 +1440,7 @@
 			isa = PBXGroup;
 			children = (
 				E1D4BF7B2719D05000A11E64 /* BasicAppSettingsView.swift */,
+				E176DE6A278E1761001EFD8D /* CastSelectorView.swift */,
 				5338F74D263B61370014BF09 /* ConnectToServerView.swift */,
 				5389276D263C25100035E14B /* ContinueWatchingView.swift */,
 				625CB56E2678C23300530A6E /* HomeView.swift */,
@@ -1612,6 +1617,7 @@
 			isa = PBXGroup;
 			children = (
 				E1E48CC8271E6D410021A2F9 /* RefreshHelper.swift */,
+				E176DE68278DE582001EFD8D /* ChromecastManager.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -2315,6 +2321,7 @@
 				E1C812CE277AE43100918266 /* VideoPlayerViewModel.swift in Sources */,
 				E10D87DA2784E4F100BD264C /* ItemViewDetailsView.swift in Sources */,
 				E1C812C3277A8E5D00918266 /* VLCPlayerOverlayView.swift in Sources */,
+				E176DE69278DE582001EFD8D /* ChromecastManager.swift in Sources */,
 				E188460026DECB9E00B0C5B7 /* ItemLandscapeTopBarView.swift in Sources */,
 				091B5A8B2683142E00D78B61 /* UDPBroadCastConnection.swift in Sources */,
 				6267B3D626710B8900A7371D /* CollectionExtensions.swift in Sources */,
@@ -2390,6 +2397,7 @@
 				539B2DA5263BA5B8007FF1A4 /* SettingsView.swift in Sources */,
 				5338F74E263B61370014BF09 /* ConnectToServerView.swift in Sources */,
 				09389CC726819B4600AE350E /* VideoPlayerModel.swift in Sources */,
+				E176DE6B278E1761001EFD8D /* CastSelectorView.swift in Sources */,
 				E1D4BF872719D27100A11E64 /* Bitrates.swift in Sources */,
 				6220D0B726D5EE1100B8E046 /* SearchCoordinator.swift in Sources */,
 				E13DD3EF27178F87009D4DAF /* SwiftfinNotificationCenter.swift in Sources */,
@@ -2773,7 +2781,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 66;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TY84JMYEFE;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				EXCLUDED_ARCHS = "";
@@ -2810,7 +2818,7 @@
 				CURRENT_PROJECT_VERSION = 66;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TY84JMYEFE;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				EXCLUDED_ARCHS = "";
@@ -2841,7 +2849,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 66;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TY84JMYEFE;
 				INFOPLIST_FILE = WidgetExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2868,7 +2876,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 66;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TY84JMYEFE;
 				INFOPLIST_FILE = WidgetExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (

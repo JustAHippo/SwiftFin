@@ -47,7 +47,7 @@
 	<key>NSBonjourServices</key>
 	<array>
 		<string>_googlecast._tcp</string>
-		<string>_F007D354._googlecast._tcp</string>
+		<string>_WXS2A2XYGO.com.swiftfin._googlecast._tcp</string>
 	</array>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>${PRODUCT_NAME} uses the local network to connect to your Jellyfin server &amp; discover Cast-enabled devices on your WiFi

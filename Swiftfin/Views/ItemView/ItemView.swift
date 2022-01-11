@@ -63,6 +63,15 @@ private struct ItemView: View {
 			if hSizeClass == .compact && vSizeClass == .regular {
 				ItemPortraitMainView()
 					.environmentObject(viewModel)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button {
+                                itemRouter.route(to: \.castSelector)
+                            } label: {
+                                Text("Cast")
+                            }
+                        }
+                    }
 			} else {
 				ItemLandscapeMainView()
 					.environmentObject(viewModel)
