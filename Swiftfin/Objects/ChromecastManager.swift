@@ -13,10 +13,14 @@ final class ChromecastManager: NSObject {
     
     static let main = ChromecastManager()
     
-    private var sessionManager: GCKSessionManager {
+    public private(set) var selectedDevice: GCKDevice?
+    public private(set) var channel: GCKGenericChannel?
+    
+    public var sessionManager: GCKSessionManager {
         GCKCastContext.sharedInstance().sessionManager
     }
-    private var discoveryManager: GCKDiscoveryManager {
+    
+    public var discoveryManager: GCKDiscoveryManager {
         GCKCastContext.sharedInstance().discoveryManager
     }
     
@@ -25,7 +29,7 @@ final class ChromecastManager: NSObject {
     override init() {
         super.init()
         
-        let discoveryCriteria = GCKDiscoveryCriteria(applicationID: "F3E31345")
+        let discoveryCriteria = GCKDiscoveryCriteria(applicationID: "F007D354")
         let gckCastOptions = GCKCastOptions(discoveryCriteria: discoveryCriteria)
         
         let launchOptions = GCKLaunchOptions()
@@ -47,7 +51,12 @@ final class ChromecastManager: NSObject {
         print(discoveryManager.discoveryState.rawValue)
     }
     
-    func setupCastLogging() {
+    func select(device: GCKDevice) {
+        selectedDevice = device
+        channel = GCKGenericChannel(namespace: "urn:x-cast:com.connectsdk")
+    }
+    
+    private func setupCastLogging() {
         let logFilter = GCKLoggerFilter()
         let classesToLog = ["GCKDeviceScanner", "GCKDeviceProvider", "GCKDiscoveryManager",
                             "GCKCastChannel", "GCKMediaControlChannel", "GCKUICastButton",
@@ -66,24 +75,23 @@ extension ChromecastManager: GCKDiscoveryManagerListener {
         
         var newDevices: [GCKDevice] = []
         
+        if newDeviceCount == 0 {
+            currentDevices = []
+            return
+        }
+        
         for deviceIndex in 0...(newDeviceCount - 1) {
             let device = discoveryManager.device(at: deviceIndex)
             newDevices.append(device)
         }
         
         currentDevices = newDevices
-        
-        print("New cast devices: ")
-        print(newDevices)
     }
-    
-    func didInsert(_ device: GCKDevice, at index: UInt) {
-        print("New device: \(device.friendlyName ?? "No name")")
-        currentDevices.append(device)
-    }
-    
-    func didHaveDiscoveredDeviceWhenStartingDiscovery() {
-        print("here")
+}
+
+extension ChromecastManager: GCKSessionManagerListener {
+    func sessionManager(_ sessionManager: GCKSessionManager, didStart session: GCKCastSession) {
+        print("started session")
     }
 }
 

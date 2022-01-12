@@ -291,6 +291,10 @@
 		E131691726C583BC0074BFEE /* LogConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131691626C583BC0074BFEE /* LogConstructor.swift */; };
 		E131691826C583BC0074BFEE /* LogConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131691626C583BC0074BFEE /* LogConstructor.swift */; };
 		E131691926C583BC0074BFEE /* LogConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131691626C583BC0074BFEE /* LogConstructor.swift */; };
+		E1361DA0278F714000BEC523 /* MissingItemsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1361D9F278F714000BEC523 /* MissingItemsSettingsView.swift */; };
+		E1361DA1278F718400BEC523 /* CastSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176DE6A278E1761001EFD8D /* CastSelectorView.swift */; };
+		E1361DA3278F71A100BEC523 /* EpisodeRowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1361DA2278F71A100BEC523 /* EpisodeRowCard.swift */; };
+		E1361DA4278F721C00BEC523 /* ChromecastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176DE68278DE582001EFD8D /* ChromecastManager.swift */; };
 		E1384944278036C70024FB48 /* VLCPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1384943278036C70024FB48 /* VLCPlayerViewController.swift */; };
 		E13849452780370B0024FB48 /* PlaybackSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C812B4277A8E5D00918266 /* PlaybackSpeed.swift */; };
 		E13DD3BF27163DD7009D4DAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13DD3BE27163DD7009D4DAF /* AppDelegate.swift */; };
@@ -330,8 +334,8 @@
 		E173DA5026D048D600CC4EB7 /* ServerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E173DA4F26D048D600CC4EB7 /* ServerDetailView.swift */; };
 		E173DA5226D04AAF00CC4EB7 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E173DA5126D04AAF00CC4EB7 /* ColorExtension.swift */; };
 		E173DA5426D050F500CC4EB7 /* ServerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E173DA5326D050F500CC4EB7 /* ServerDetailViewModel.swift */; };
-		E176DE6D278E30D2001EFD8D /* EpisodeRowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176DE6C278E30D2001EFD8D /* EpisodeRowCard.swift */; };
-		E176DE70278E369F001EFD8D /* MissingItemsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176DE6F278E369F001EFD8D /* MissingItemsSettingsView.swift */; };
+		E176DE6D278E30D2001EFD8D /* (null) in Sources */ = {isa = PBXBuildFile; };
+		E176DE70278E369F001EFD8D /* (null) in Sources */ = {isa = PBXBuildFile; };
 		E178857D278037FD0094FBCF /* JellyfinAPI in Frameworks */ = {isa = PBXBuildFile; productRef = E178857C278037FD0094FBCF /* JellyfinAPI */; };
 		E178859B2780F1F40094FBCF /* tvOSSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178859A2780F1F40094FBCF /* tvOSSlider.swift */; };
 		E178859E2780F53B0094FBCF /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178859D2780F53B0094FBCF /* SliderView.swift */; };
@@ -675,6 +679,8 @@
 		E1267D3D271A1F46003C492E /* PreferenceUIHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceUIHostingController.swift; sourceTree = "<group>"; };
 		E126F740278A656C00A522BF /* ServerStreamType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerStreamType.swift; sourceTree = "<group>"; };
 		E131691626C583BC0074BFEE /* LogConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogConstructor.swift; sourceTree = "<group>"; };
+		E1361D9F278F714000BEC523 /* MissingItemsSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingItemsSettingsView.swift; sourceTree = "<group>"; };
+		E1361DA2278F71A100BEC523 /* EpisodeRowCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeRowCard.swift; sourceTree = "<group>"; };
 		E1384943278036C70024FB48 /* VLCPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VLCPlayerViewController.swift; sourceTree = "<group>"; };
 		E13D02842788B634000FCB04 /* Swiftfin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Swiftfin.entitlements; sourceTree = "<group>"; };
 		E13DD3BE27163DD7009D4DAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1488,8 +1494,8 @@
 		E176DE6E278E3522001EFD8D /* EpisodesRowView */ = {
 			isa = PBXGroup;
 			children = (
+				E1361DA2278F71A100BEC523 /* EpisodeRowCard.swift */,
 				E10D87DB2784EC5200BD264C /* EpisodesRowView.swift */,
-				E176DE6C278E30D2001EFD8D /* EpisodeRowCard.swift */,
 			);
 			path = EpisodesRowView;
 			sourceTree = "<group>";
@@ -1615,7 +1621,6 @@
 			isa = PBXGroup;
 			children = (
 				E1E5D5382783A56B00692DFE /* EpisodesRowView.swift */,
-				E1BDE35A278EA3A3004E4022 /* EpisodesRowCard.swift */,
 			);
 			path = EpisodesRowView;
 			sourceTree = "<group>";
@@ -1657,9 +1662,9 @@
 			isa = PBXGroup;
 			children = (
 				E1E5D54B2783E27200692DFE /* ExperimentalSettingsView.swift */,
+				E1361D9F278F714000BEC523 /* MissingItemsSettingsView.swift */,
 				E1E5D5472783CCF900692DFE /* OverlaySettingsView.swift */,
 				539B2DA4263BA5B8007FF1A4 /* SettingsView.swift */,
-				E176DE6F278E369F001EFD8D /* MissingItemsSettingsView.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -1668,7 +1673,6 @@
 			isa = PBXGroup;
 			children = (
 				E1E5D5502783E67700692DFE /* ExperimentalSettingsView.swift */,
-				E1BDE358278E9ED2004E4022 /* MissingItemsSettingsView.swift */,
 				E1E5D54E2783E67100692DFE /* OverlaySettingsView.swift */,
 				5398514426B64DA100101B49 /* SettingsView.swift */,
 			);
@@ -2171,7 +2175,6 @@
 				E103A6A0278A7E4500820EC7 /* UICinematicBackgroundView.swift in Sources */,
 				E100720726BDABC100CE3E31 /* MediaPlayButtonRowView.swift in Sources */,
 				E17885A02780F55C0094FBCF /* tvOSVLCOverlay.swift in Sources */,
-				E1BDE359278E9ED2004E4022 /* MissingItemsSettingsView.swift in Sources */,
 				E193D54D2719426600900D82 /* LibraryFilterView.swift in Sources */,
 				C4BE07892728448B003F4AD1 /* LiveTVChannelsCoordinator.swift in Sources */,
 				E193D53927193F8E00900D82 /* SearchCoordinator.swift in Sources */,
@@ -2252,7 +2255,6 @@
 				E1D4BF8F271A079A00A11E64 /* BasicAppSettingsView.swift in Sources */,
 				E193D547271941C500900D82 /* UserListView.swift in Sources */,
 				E1D4BF7F2719D1DD00A11E64 /* BasicAppSettingsViewModel.swift in Sources */,
-				E1BDE35B278EA3A3004E4022 /* EpisodesRowCard.swift in Sources */,
 				E193D53227193F7B00900D82 /* ConnectToServerCoodinator.swift in Sources */,
 				53ABFDE4267974EF00886593 /* LibraryListViewModel.swift in Sources */,
 				5364F456266CA0DC0026ECBA /* BaseItemPersonExtensions.swift in Sources */,
@@ -2289,12 +2291,14 @@
 				62E632DC267D2E130063E547 /* LibrarySearchViewModel.swift in Sources */,
 				62C29E9F26D1016600C1D2E7 /* iOSMainCoordinator.swift in Sources */,
 				5389276E263C25100035E14B /* ContinueWatchingView.swift in Sources */,
+				E1361DA0278F714000BEC523 /* MissingItemsSettingsView.swift in Sources */,
 				53F866442687A45F00DCD1D7 /* PortraitItemView.swift in Sources */,
 				E1AD105626D981CE003E4A08 /* PortraitHStackView.swift in Sources */,
 				62C29EA126D102A500C1D2E7 /* iOSMainTabCoordinator.swift in Sources */,
 				C4BE076E2720FEA8003F4AD1 /* PortraitItemElement.swift in Sources */,
 				E1C812C0277A8E5D00918266 /* VLCPlayerView.swift in Sources */,
-				E176DE6D278E30D2001EFD8D /* EpisodeRowCard.swift in Sources */,
+				E176DE6D278E30D2001EFD8D /* (null) in Sources */,
+				E1361DA3278F71A100BEC523 /* EpisodeRowCard.swift in Sources */,
 				535BAE9F2649E569005FA86D /* ItemView.swift in Sources */,
 				E10EAA4F277BBCC4000269ED /* CGSizeExtensions.swift in Sources */,
 				E10D87E227852FD000BD264C /* EpisodesRowManager.swift in Sources */,
@@ -2340,7 +2344,6 @@
 				E1C812CE277AE43100918266 /* VideoPlayerViewModel.swift in Sources */,
 				E10D87DA2784E4F100BD264C /* ItemViewDetailsView.swift in Sources */,
 				E1C812C3277A8E5D00918266 /* VLCPlayerOverlayView.swift in Sources */,
-				E176DE69278DE582001EFD8D /* ChromecastManager.swift in Sources */,
 				E188460026DECB9E00B0C5B7 /* ItemLandscapeTopBarView.swift in Sources */,
 				091B5A8B2683142E00D78B61 /* UDPBroadCastConnection.swift in Sources */,
 				6267B3D626710B8900A7371D /* CollectionExtensions.swift in Sources */,
@@ -2387,7 +2390,7 @@
 				E173DA5026D048D600CC4EB7 /* ServerDetailView.swift in Sources */,
 				62EC352F267666A5000E9F2D /* SessionManager.swift in Sources */,
 				62E632E3267D3BA60063E547 /* MovieItemViewModel.swift in Sources */,
-				E176DE70278E369F001EFD8D /* MissingItemsSettingsView.swift in Sources */,
+				E176DE70278E369F001EFD8D /* (null) in Sources */,
 				C4BE076F2720FEFF003F4AD1 /* PlainNavigationLinkButton.swift in Sources */,
 				E1EBCB46278BD595009FE6E9 /* ItemOverviewView.swift in Sources */,
 				091B5A8A2683142E00D78B61 /* ServerDiscovery.swift in Sources */,
@@ -2404,6 +2407,7 @@
 				E13DD3D5271693CD009D4DAF /* SwiftfinStoreDefaults.swift in Sources */,
 				62E1DCC3273CE19800C9AE76 /* URLExtensions.swift in Sources */,
 				C4BE0769271FC164003F4AD1 /* TVLibrariesView.swift in Sources */,
+				E1361DA1278F718400BEC523 /* CastSelectorView.swift in Sources */,
 				E1267D3E271A1F46003C492E /* PreferenceUIHostingController.swift in Sources */,
 				6220D0BA26D6092100B8E046 /* FilterCoordinator.swift in Sources */,
 				E1E5D54C2783E27200692DFE /* ExperimentalSettingsView.swift in Sources */,
@@ -2412,12 +2416,12 @@
 				62EC353426766B03000E9F2D /* DeviceRotationViewModifier.swift in Sources */,
 				5389277C263CC3DB0035E14B /* BlurHashDecode.swift in Sources */,
 				E1D4BF8A2719D3D000A11E64 /* BasicAppSettingsCoordinator.swift in Sources */,
+				E1361DA4278F721C00BEC523 /* ChromecastManager.swift in Sources */,
 				E13DD3F92717E961009D4DAF /* UserListViewModel.swift in Sources */,
 				E126F741278A656C00A522BF /* ServerStreamType.swift in Sources */,
 				539B2DA5263BA5B8007FF1A4 /* SettingsView.swift in Sources */,
 				5338F74E263B61370014BF09 /* ConnectToServerView.swift in Sources */,
 				09389CC726819B4600AE350E /* VideoPlayerModel.swift in Sources */,
-				E176DE6B278E1761001EFD8D /* CastSelectorView.swift in Sources */,
 				E1D4BF872719D27100A11E64 /* Bitrates.swift in Sources */,
 				6220D0B726D5EE1100B8E046 /* SearchCoordinator.swift in Sources */,
 				E13DD3EF27178F87009D4DAF /* SwiftfinNotificationCenter.swift in Sources */,

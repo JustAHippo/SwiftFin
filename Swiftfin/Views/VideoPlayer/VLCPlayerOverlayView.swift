@@ -131,6 +131,19 @@ struct VLCPlayerOverlayView: View {
 								.disabled(viewModel.selectedSubtitleStreamIndex == -1)
 								.foregroundColor(viewModel.selectedSubtitleStreamIndex == -1 ? .gray : .white)
 							}
+                            
+                            Menu {
+                                ForEach(ChromecastManager.main.currentDevices, id: \.self) { device in
+                                    Button {
+                                        viewModel.playerOverlayDelegate?.didSelectCastDevice(device)
+                                    } label: {
+                                        Text(device.friendlyName ?? "")
+                                    }
+                                }
+                            } label: {
+                                WrappedCastButton()
+                                    .frame(width: 30, height: 30)
+                            }
 
 							// MARK: Settings Menu
 

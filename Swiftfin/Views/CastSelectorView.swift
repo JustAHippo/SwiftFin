@@ -11,17 +11,36 @@ import SwiftUI
 
 struct CastSelectorView: View {
     
+    @EnvironmentObject
+    var castSelectorRouter: CastSelectorCoordinator.Router
     @State
     private var devices: [GCKDevice] = []
     
     var body: some View {
-        List(devices, id: \.self) { device in
-            Text(device.friendlyName ?? "No name")
+        Group {
+            if devices.isEmpty {
+                Text("No devices found")
+            } else {
+                List(devices, id: \.self) { device in
+                    Text(device.friendlyName ?? "No name")
+                }
+            }
         }
-        .navigationTitle("Chromecast")
-        .navigationBarTitleDisplayMode(.inline)
-//        .onChange(of: ChromecastManager.main.currentDevices) { newValue in
-//            devices = newValue
-//        }
+        .navigationBarTitle("Chromecast", displayMode: .inline)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarLeading) {
+                Button {
+                    castSelectorRouter.dismissCoordinator()
+                } label: {
+                    Image(systemName: "xmark.circle.fill")
+                }
+            }
+        }
+        .onChange(of: ChromecastManager.main.currentDevices) { newValue in
+            devices = newValue
+        }
+        .onAppear {
+            devices = ChromecastManager.main.currentDevices
+        }
     }
 }

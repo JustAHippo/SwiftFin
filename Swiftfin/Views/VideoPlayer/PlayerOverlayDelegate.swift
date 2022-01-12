@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GoogleCast
 
 protocol PlayerOverlayDelegate {
 
@@ -28,4 +29,6 @@ protocol PlayerOverlayDelegate {
 
 	func didSelectPlayPreviousItem()
 	func didSelectPlayNextItem()
+    
+    func didSelectCastDevice(_ device: GCKDevice)
 }

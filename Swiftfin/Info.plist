@@ -44,6 +44,7 @@
 	<string>${PRODUCT_NAME} uses Bluetooth to discover nearby Cast devices.</string>
 	<key>NSBonjourServices</key>
 	<array>
+		<string>_F007D354._googlecast._tcp</string>
 		<string>_googlecast._tcp</string>
 		<string>_F3E31345._googlecast._tcp</string>
 	</array>

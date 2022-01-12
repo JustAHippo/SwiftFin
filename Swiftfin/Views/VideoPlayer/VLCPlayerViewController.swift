@@ -10,9 +10,11 @@ import AVFoundation
 import AVKit
 import Combine
 import Defaults
+import GoogleCast
 import JellyfinAPI
 import MediaPlayer
 import MobileVLCKit
+import SwiftyJSON
 import SwiftUI
 import UIKit
 
@@ -102,6 +104,13 @@ class VLCPlayerViewController: UIViewController {
 
 		refreshJumpBackwardOverlayView(with: viewModel.jumpBackwardLength)
 		refreshJumpForwardOverlayView(with: viewModel.jumpForwardLength)
+        
+//        playerDestination = .remote
+//        castSessionManager.add(self)
+//        castSessionManager.startSession(with: selectedCastDevice!)
+        
+        ChromecastManager.main.sessionManager.add(self)
+        ChromecastManager.main.channel?.delegate = self
 
 		let defaultNotificationCenter = NotificationCenter.default
 		defaultNotificationCenter.addObserver(self, selector: #selector(appWillTerminate), name: UIApplication.willTerminateNotification,
@@ -707,4 +716,100 @@ extension VLCPlayerViewController: PlayerOverlayDelegate {
 			startPlayback()
 		}
 	}
+    
+    func didSelectCastDevice(_ device: GCKDevice) {
+        ChromecastManager.main.sessionManager.endSessionAndStopCasting(true)
+        ChromecastManager.main.select(device: device)
+        ChromecastManager.main.sessionManager.startSession(with: device)
+    }
+}
+
+// MARK: Chromecast
+
+extension VLCPlayerViewController: GCKSessionManagerListener {
+    
+    func sendCastCommand(command: String, options: [String: Any]) {
+        let payload: [String: Any] = [
+            "options": options,
+            "command": command,
+            "userId": SessionManager.main.currentLogin.user.id,
+            "deviceId": UIDevice.current.name,
+            "accessToken": SessionManager.main.currentLogin.user.accessToken,
+            "serverAddress": SessionManager.main.currentLogin.server.currentURI,
+            "serverId": SessionManager.main.currentLogin.server.id,
+            "serverVersion": SessionManager.main.currentLogin.server.version,
+            "receiverName": ChromecastManager.main.sessionManager.currentCastSession?.device.friendlyName ?? "",
+            "subtitleBurnIn": false
+        ]
+        
+        let jsonData = JSON(payload)
+
+        ChromecastManager.main.channel?.sendTextMessage(jsonData.rawString() ?? "", error: nil)
+    }
+    
+    func sessionManager(_ sessionManager: GCKSessionManager, didStart session: GCKCastSession) {
+        vlcMediaPlayer.pause()
+        sessionManager.currentCastSession?.start()
+        
+        if let channel = ChromecastManager.main.channel {
+            session.add(channel)
+        }
+        
+        if let client = session.remoteMediaClient {
+            client.add(self)
+        }
+        
+        let playNowOptions: [String: Any] = [
+            "items": [[
+                "Id": viewModel.item.id!,
+                "ServerId": SessionManager.main.currentLogin.server.id,
+                "Name": viewModel.item.name!,
+                "Type": viewModel.item.type!,
+                "MediaType": viewModel.item.mediaType!,
+                "IsFolder": viewModel.item.isFolder!
+            ]]
+        ]
+        
+        sendCastCommand(command: "PlayNow", options: playNowOptions)
+    }
+    
+    func sessionManager(_ sessionManager: GCKSessionManager, didResumeCastSession session: GCKCastSession) {
+        vlcMediaPlayer.pause()
+        sessionManager.currentCastSession?.start()
+        
+        if let channel = ChromecastManager.main.channel {
+            session.add(channel)
+        }
+        
+        if let client = session.remoteMediaClient {
+            client.add(self)
+        }
+        
+        let playNowOptions: [String: Any] = [
+            "items": [[
+                "Id": viewModel.item.id!,
+                "ServerId": SessionManager.main.currentLogin.server.id,
+                "Name": viewModel.item.name!,
+                "Type": viewModel.item.type!,
+                "MediaType": viewModel.item.mediaType!,
+                "IsFolder": viewModel.item.isFolder!
+            ]]
+        ]
+        
+        sendCastCommand(command: "PlayNow", options: playNowOptions)
+    }
+    
+    func sessionManager(_ sessionManager: GCKSessionManager, willEnd session: GCKCastSession) {
+        print("WILL END CAST SESSION")
+    }
+}
+
+extension VLCPlayerViewController: GCKGenericChannelDelegate {
+    func cast(_ channel: GCKGenericChannel, didReceiveTextMessage message: String, withNamespace protocolNamespace: String) {
+        
+    }
+}
+
+extension VLCPlayerViewController: GCKRemoteMediaClientListener {
+    
 }
