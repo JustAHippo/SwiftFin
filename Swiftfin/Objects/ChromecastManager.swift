@@ -24,16 +24,20 @@ final class ChromecastManager: NSObject {
         currentDevices = []
         super.init()
         
-        let discoveryCriteria = GCKDiscoveryCriteria(applicationID: "WXS2A2XYGO.com.swiftfin")
+        let discoveryCriteria = GCKDiscoveryCriteria(applicationID: "F007D354")
         let gckCastOptions = GCKCastOptions(discoveryCriteria: discoveryCriteria)
         GCKCastContext.setSharedInstanceWith(gckCastOptions)
         discoveryManager.passiveScan = true
         discoveryManager.add(self)
         discoveryManager.startDiscovery()
+        
+        GCKLogger.sharedInstance().delegate = self
+        
+        LogManager.shared.log.debug("Starting Chromecast discovery")
     }
     
     func search() {
-        
+        discoveryManager.startDiscovery()
     }
 }
 
@@ -59,5 +63,14 @@ extension ChromecastManager: GCKDiscoveryManagerListener {
     func didInsert(_ device: GCKDevice, at index: UInt) {
         print("New device: \(device.friendlyName ?? "No name")")
         currentDevices.append(device)
+    }
+}
+
+extension ChromecastManager: GCKLoggerDelegate {
+    func logMessage(_ message: String,
+                  at level: GCKLoggerLevel,
+                  fromFunction function: String,
+                  location: String) {
+        print(function + " - " + message)
     }
 }

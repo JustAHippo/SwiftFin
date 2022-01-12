@@ -11,9 +11,8 @@ import GoogleCast
 import SwiftUI
 import UIKit
 
-class AppDelegate: NSObject, UIApplicationDelegate, GCKLoggerDelegate {
+class AppDelegate: NSObject, UIApplicationDelegate {
 	static var orientationLock = UIInterfaceOrientationMask.all
-    let kReceiverAppID = kGCKDefaultMediaReceiverApplicationID
 
 	func application(_ application: UIApplication,
 	                 didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool
@@ -22,15 +21,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, GCKLoggerDelegate {
 		// Lazily initialize datastack
 		_ = SwiftfinStore.dataStack
         _ = ChromecastManager.main
-        
-        let criteria = GCKDiscoveryCriteria(applicationID: kReceiverAppID)
-        let options = GCKCastOptions(discoveryCriteria: criteria)
-        GCKCastContext.setSharedInstanceWith(options)
-        
-        print("APP ID: \(kReceiverAppID)")
-
-        // Enable logger.
-        GCKLogger.sharedInstance().delegate = self
 
 		let audioSession = AVAudioSession.sharedInstance()
 		do {
@@ -45,11 +35,4 @@ class AppDelegate: NSObject, UIApplicationDelegate, GCKLoggerDelegate {
 	func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
 		AppDelegate.orientationLock
 	}
-    
-    func logMessage(_ message: String,
-                  at level: GCKLoggerLevel,
-                  fromFunction function: String,
-                  location: String) {
-        print(function + " - " + message)
-    }
 }

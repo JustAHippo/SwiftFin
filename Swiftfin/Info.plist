@@ -46,14 +46,16 @@
 	<string>${PRODUCT_NAME} uses Bluetooth to discover nearby Cast devices.</string>
 	<key>NSBonjourServices</key>
 	<array>
+		<string>_F007D354._googlecast._tcp</string>
+		<string>_CC1AD845.com.swiftfin._googlecast._tcp</string>
 		<string>_googlecast._tcp</string>
-		<string>_WXS2A2XYGO.com.swiftfin._googlecast._tcp</string>
+		<string>_CC1AD845._googlecast._tcp</string>
 	</array>
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>${PRODUCT_NAME} uses the local network to connect to your Jellyfin server &amp; discover Cast-enabled devices on your WiFi
+	<string>${PRODUCT_NAME} uses the local network to connect to your Jellyfin server &amp; discover Cast-enabled devices
 network.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>${PRODUCT_NAME} uses microphone access to listen for ultrasonic tokens when pairing with nearby Cast devices.</string>
+	<string>${PRODUCT_NAME} uses microphone access to listen for ultrasonic tokens when pairing with nearby Cast devices</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

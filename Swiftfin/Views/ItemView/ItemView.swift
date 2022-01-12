@@ -6,6 +6,7 @@
 // Copyright (c) 2022 Jellyfin & Jellyfin Contributors
 //
 
+import GoogleCast
 import Introspect
 import JellyfinAPI
 import SwiftUI
@@ -66,9 +67,10 @@ private struct ItemView: View {
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button {
+                                ChromecastManager.main.search()
                                 itemRouter.route(to: \.castSelector)
                             } label: {
-                                Text("Cast")
+                                WrappedCastButton()
                             }
                         }
                     }
@@ -78,4 +80,17 @@ private struct ItemView: View {
 			}
 		}
 	}
+}
+
+struct WrappedCastButton: UIViewRepresentable {
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+        
+    }
+    
+    func makeUIView(context: Context) -> some UIView {
+        let castButton = GCKUICastButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        castButton.tintColor = UIColor.gray
+        
+        return castButton
+    }
 }
