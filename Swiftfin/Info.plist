@@ -42,14 +42,10 @@
 	</dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>${PRODUCT_NAME} uses Bluetooth to discover nearby Cast devices.</string>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>${PRODUCT_NAME} uses Bluetooth to discover nearby Cast devices.</string>
 	<key>NSBonjourServices</key>
 	<array>
-		<string>_F007D354._googlecast._tcp</string>
-		<string>_CC1AD845.com.swiftfin._googlecast._tcp</string>
 		<string>_googlecast._tcp</string>
-		<string>_CC1AD845._googlecast._tcp</string>
+		<string>_F3E31345._googlecast._tcp</string>
 	</array>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>${PRODUCT_NAME} uses the local network to connect to your Jellyfin server &amp; discover Cast-enabled devices

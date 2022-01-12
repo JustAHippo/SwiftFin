@@ -20,8 +20,8 @@ struct CastSelectorView: View {
         }
         .navigationTitle("Chromecast")
         .navigationBarTitleDisplayMode(.inline)
-        .onChange(of: ChromecastManager.main.currentDevices) { newValue in
-            devices = newValue
-        }
+//        .onChange(of: ChromecastManager.main.currentDevices) { newValue in
+//            devices = newValue
+//        }
     }
 }

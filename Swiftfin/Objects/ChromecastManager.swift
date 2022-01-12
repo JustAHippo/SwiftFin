@@ -13,31 +13,48 @@ final class ChromecastManager: NSObject {
     
     static let main = ChromecastManager()
     
-    private let sessionManager: GCKSessionManager
-    private let discoveryManager: GCKDiscoveryManager
+    private var sessionManager: GCKSessionManager {
+        GCKCastContext.sharedInstance().sessionManager
+    }
+    private var discoveryManager: GCKDiscoveryManager {
+        GCKCastContext.sharedInstance().discoveryManager
+    }
     
-    private(set) var currentDevices: [GCKDevice]
+    private(set) var currentDevices: [GCKDevice] = []
     
     override init() {
-        sessionManager = GCKCastContext.sharedInstance().sessionManager
-        discoveryManager = GCKCastContext.sharedInstance().discoveryManager
-        currentDevices = []
         super.init()
         
-        let discoveryCriteria = GCKDiscoveryCriteria(applicationID: "F007D354")
+        let discoveryCriteria = GCKDiscoveryCriteria(applicationID: "F3E31345")
         let gckCastOptions = GCKCastOptions(discoveryCriteria: discoveryCriteria)
+        
+        let launchOptions = GCKLaunchOptions()
+        launchOptions.androidReceiverCompatible = true
+        gckCastOptions.launchOptions = launchOptions
+        
         GCKCastContext.setSharedInstanceWith(gckCastOptions)
         discoveryManager.passiveScan = true
         discoveryManager.add(self)
         discoveryManager.startDiscovery()
         
-        GCKLogger.sharedInstance().delegate = self
+        setupCastLogging()
         
         LogManager.shared.log.debug("Starting Chromecast discovery")
     }
     
     func search() {
-        discoveryManager.startDiscovery()
+//        discoveryManager.startDiscovery()
+        print(discoveryManager.discoveryState.rawValue)
+    }
+    
+    func setupCastLogging() {
+        let logFilter = GCKLoggerFilter()
+        let classesToLog = ["GCKDeviceScanner", "GCKDeviceProvider", "GCKDiscoveryManager",
+                            "GCKCastChannel", "GCKMediaControlChannel", "GCKUICastButton",
+                            "GCKUIMediaController", "NSMutableDictionary"]
+        logFilter.setLoggingLevel(.verbose, forClasses: classesToLog)
+        GCKLogger.sharedInstance().filter = logFilter
+        GCKLogger.sharedInstance().delegate = self
     }
 }
 
@@ -63,6 +80,10 @@ extension ChromecastManager: GCKDiscoveryManagerListener {
     func didInsert(_ device: GCKDevice, at index: UInt) {
         print("New device: \(device.friendlyName ?? "No name")")
         currentDevices.append(device)
+    }
+    
+    func didHaveDiscoveredDeviceWhenStartingDiscovery() {
+        print("here")
     }
 }
 

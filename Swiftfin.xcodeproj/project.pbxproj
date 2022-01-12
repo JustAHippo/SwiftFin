@@ -391,6 +391,7 @@
 		E1B59FD92786AE4600A5287E /* NextUpCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B59FD82786AE4600A5287E /* NextUpCard.swift */; };
 		E1B6DCE8271A23780015B715 /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = E1B6DCE7271A23780015B715 /* CombineExt */; };
 		E1B6DCEA271A23880015B715 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = E1B6DCE9271A23880015B715 /* SwiftyJSON */; };
+		E1BDE35E278EC1FE004E4022 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BDE35D278EC1FE004E4022 /* ExternalAccessory.framework */; };
 		E1C812BC277A8E5D00918266 /* PlaybackSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C812B4277A8E5D00918266 /* PlaybackSpeed.swift */; };
 		E1C812BD277A8E5D00918266 /* PlayerOverlayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C812B5277A8E5D00918266 /* PlayerOverlayDelegate.swift */; };
 		E1C812BE277A8E5D00918266 /* VLCPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C812B6277A8E5D00918266 /* VLCPlayerViewController.swift */; };
@@ -730,6 +731,7 @@
 		E1AD106126D9B7CD003E4A08 /* ItemPortraitHeaderOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPortraitHeaderOverlayView.swift; sourceTree = "<group>"; };
 		E1B59FD42786ADE500A5287E /* ContinueWatchingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueWatchingCard.swift; sourceTree = "<group>"; };
 		E1B59FD82786AE4600A5287E /* NextUpCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextUpCard.swift; sourceTree = "<group>"; };
+		E1BDE35D278EC1FE004E4022 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		E1C812B4277A8E5D00918266 /* PlaybackSpeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackSpeed.swift; sourceTree = "<group>"; };
 		E1C812B5277A8E5D00918266 /* PlayerOverlayDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerOverlayDelegate.swift; sourceTree = "<group>"; };
 		E1C812B6277A8E5D00918266 /* VLCPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VLCPlayerViewController.swift; sourceTree = "<group>"; };
@@ -802,6 +804,7 @@
 				53649AAD269CFAEA00A2D8B7 /* Puppy in Frameworks */,
 				E10EAA4D277BB716000269ED /* Sliders in Frameworks */,
 				62C29E9C26D0FE4200C1D2E7 /* Stinsen in Frameworks */,
+				E1BDE35E278EC1FE004E4022 /* ExternalAccessory.framework in Frameworks */,
 				E1A99999271A3429008E78C0 /* SwiftUICollection in Frameworks */,
 				E1B6DCEA271A23880015B715 /* SwiftyJSON in Frameworks */,
 				53352571265EA0A0006CCA86 /* Introspect in Frameworks */,
@@ -1038,14 +1041,14 @@
 		5377CBF3263B596A003A4E83 /* Swiftfin */ = {
 			isa = PBXGroup;
 			children = (
-				E1DD1127271E7D15005BE12F /* Objects */,
 				E13DD3BB27163C3E009D4DAF /* App */,
 				62ECA01926FA6D6900E8EBB7 /* AppURLHandler */,
 				5377CBF8263B596B003A4E83 /* Assets.xcassets */,
 				53F866422687A45400DCD1D7 /* Components */,
 				5377CC02263B596B003A4E83 /* Info.plist */,
-				E13D02842788B634000FCB04 /* Swiftfin.entitlements */,
+				E1DD1127271E7D15005BE12F /* Objects */,
 				5377CBFA263B596B003A4E83 /* Preview Content */,
+				E13D02842788B634000FCB04 /* Swiftfin.entitlements */,
 				E13DD3D027165886009D4DAF /* Views */,
 			);
 			path = Swiftfin;
@@ -1179,6 +1182,7 @@
 		53D5E3DB264B47EE00BADDC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1BDE35D278EC1FE004E4022 /* ExternalAccessory.framework */,
 				5362E4C8267D40F7000E2F71 /* UIKit.framework */,
 				5362E4C6267D40F4000E2F71 /* SystemConfiguration.framework */,
 				5362E4C4267D40F0000E2F71 /* Security.framework */,
@@ -2793,7 +2797,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.swiftfin;
+				PRODUCT_BUNDLE_IDENTIFIER = pips.swiftfin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTS_MACCATALYST = NO;
@@ -2830,7 +2834,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.swiftfin;
+				PRODUCT_BUNDLE_IDENTIFIER = pips.swiftfin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTS_MACCATALYST = NO;
@@ -2858,7 +2862,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.swiftfin.widget;
+				PRODUCT_BUNDLE_IDENTIFIER = pips.swiftfin.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
@@ -2885,7 +2889,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.swiftfin.widget;
+				PRODUCT_BUNDLE_IDENTIFIER = pips.swiftfin.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

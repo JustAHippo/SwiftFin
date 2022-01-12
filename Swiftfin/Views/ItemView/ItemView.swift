@@ -67,10 +67,11 @@ private struct ItemView: View {
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button {
-                                ChromecastManager.main.search()
+//                                ChromecastManager.main.search()
                                 itemRouter.route(to: \.castSelector)
                             } label: {
                                 WrappedCastButton()
+//                                Text("Cast")
                             }
                         }
                     }
