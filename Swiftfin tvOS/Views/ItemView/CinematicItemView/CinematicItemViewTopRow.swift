@@ -59,8 +59,8 @@ struct CinematicItemViewTopRow: View {
 							// MARK: Play
 
 							Button {
-								if let itemVideoPlayerViewModel = viewModel.itemVideoPlayerViewModel {
-									itemRouter.route(to: \.videoPlayer, itemVideoPlayerViewModel)
+								if let selectedVideoPlayerViewModel = viewModel.selectedVideoPlayerViewModel {
+									itemRouter.route(to: \.videoPlayer, selectedVideoPlayerViewModel)
 								} else {
 									LogManager.shared.log.error("Attempted to play item but no playback information available")
 								}
@@ -78,6 +78,24 @@ struct CinematicItemViewTopRow: View {
 								.cornerRadius(10)
 							}
 							.buttonStyle(CardButtonStyle())
+							.contextMenu {
+								if viewModel.playButtonItem != nil, viewModel.item.userData?.playbackPositionTicks ?? 0 > 0 {
+									Button {
+										if let selectedVideoPlayerViewModel = viewModel.selectedVideoPlayerViewModel {
+											selectedVideoPlayerViewModel.injectCustomValues(startFromBeginning: true)
+											itemRouter.route(to: \.videoPlayer, selectedVideoPlayerViewModel)
+										} else {
+											LogManager.shared.log.error("Attempted to play item but no playback information available")
+										}
+									} label: {
+										Label(L10n.playFromBeginning, systemImage: "gobackward")
+									}
+
+									Button(role: .cancel) {} label: {
+										L10n.cancel.text
+									}
+								}
+							}
 						}
 					}
 

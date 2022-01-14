@@ -34,7 +34,7 @@ struct ItemLandscapeMainView: View {
 				// MARK: Play
 
 				Button {
-					self.itemRouter.route(to: \.videoPlayer, viewModel.itemVideoPlayerViewModel!)
+					self.itemRouter.route(to: \.videoPlayer, viewModel.selectedVideoPlayerViewModel!)
 				} label: {
 					HStack {
 						Image(systemName: "play.fill")
@@ -49,7 +49,21 @@ struct ItemLandscapeMainView: View {
 					.background(viewModel.playButtonItem == nil ? Color(UIColor.secondarySystemFill) : Color.jellyfinPurple)
 					.cornerRadius(10)
 				}
-				.disabled(viewModel.playButtonItem == nil || viewModel.itemVideoPlayerViewModel == nil)
+				.disabled(viewModel.playButtonItem == nil || viewModel.selectedVideoPlayerViewModel == nil)
+				.contextMenu {
+					if viewModel.playButtonItem != nil, viewModel.item.userData?.playbackPositionTicks ?? 0 > 0 {
+						Button {
+							if let selectedVideoPlayerViewModel = viewModel.selectedVideoPlayerViewModel {
+								selectedVideoPlayerViewModel.injectCustomValues(startFromBeginning: true)
+								itemRouter.route(to: \.videoPlayer, selectedVideoPlayerViewModel)
+							} else {
+								LogManager.shared.log.error("Attempted to play item but no playback information available")
+							}
+						} label: {
+							Label(L10n.playFromBeginning, systemImage: "gobackward")
+						}
+					}
+				}
 
 				Spacer()
 			}
