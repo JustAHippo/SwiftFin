@@ -725,9 +725,12 @@ extension VLCPlayerViewController: PlayerOverlayDelegate {
 	}
     
     func didSelectCastDevice(_ device: GCKDevice) {
-        ChromecastManager.main.sessionManager.endSessionAndStopCasting(true)
         ChromecastManager.main.select(device: device)
-        ChromecastManager.main.sessionManager.startSession(with: device)
+        ChromecastManager.main.startCast(videoPlayerViewModel: viewModel)
+    }
+    
+    func didSelectStopCasting() {
+        ChromecastManager.main.stopCast()
     }
 }
 

@@ -31,4 +31,5 @@ protocol PlayerOverlayDelegate {
 	func didSelectPlayNextItem()
     
     func didSelectCastDevice(_ device: GCKDevice)
+    func didSelectStopCasting()
 }

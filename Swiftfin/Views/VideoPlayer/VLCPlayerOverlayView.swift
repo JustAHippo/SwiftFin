@@ -133,11 +133,25 @@ struct VLCPlayerOverlayView: View {
 							}
                             
                             Menu {
-                                ForEach(ChromecastManager.main.currentDevices, id: \.self) { device in
+                                if let selectedDevice = ChromecastManager.main.selectedDevice {
                                     Button {
-                                        viewModel.playerOverlayDelegate?.didSelectCastDevice(device)
+                                        
                                     } label: {
-                                        Text(device.friendlyName ?? "")
+                                        Text(selectedDevice.friendlyName ?? "")
+                                    }
+                                    
+                                    Button {
+                                        viewModel.playerOverlayDelegate?.didSelectStopCasting()
+                                    } label: {
+                                        Text("Stop Casting")
+                                    }
+                                } else {
+                                    ForEach(ChromecastManager.main.currentDevices, id: \.self) { device in
+                                        Button {
+                                            viewModel.playerOverlayDelegate?.didSelectCastDevice(device)
+                                        } label: {
+                                            Text(device.friendlyName ?? "")
+                                        }
                                     }
                                 }
                             } label: {

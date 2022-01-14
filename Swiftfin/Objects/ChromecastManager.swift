@@ -8,6 +8,7 @@
 
 import Foundation
 import GoogleCast
+import SwiftyJSON
 
 final class ChromecastManager: NSObject {
     
@@ -15,6 +16,7 @@ final class ChromecastManager: NSObject {
     
     public private(set) var selectedDevice: GCKDevice?
     public private(set) var channel: GCKGenericChannel?
+    public private(set) var currentVideoPlayerViewModel: VideoPlayerViewModel?
     
     public var sessionManager: GCKSessionManager {
         GCKCastContext.sharedInstance().sessionManager
@@ -36,6 +38,8 @@ final class ChromecastManager: NSObject {
         launchOptions.androidReceiverCompatible = true
         gckCastOptions.launchOptions = launchOptions
         
+        sessionManager.add(self)
+        
         GCKCastContext.setSharedInstanceWith(gckCastOptions)
         discoveryManager.passiveScan = true
         discoveryManager.add(self)
@@ -46,14 +50,21 @@ final class ChromecastManager: NSObject {
         LogManager.shared.log.debug("Starting Chromecast discovery")
     }
     
-    func search() {
-//        discoveryManager.startDiscovery()
-        print(discoveryManager.discoveryState.rawValue)
-    }
-    
     func select(device: GCKDevice) {
         selectedDevice = device
         channel = GCKGenericChannel(namespace: "urn:x-cast:com.connectsdk")
+    }
+    
+    func stopCast() {
+        sessionManager.endSessionAndStopCasting(true)
+        selectedDevice = nil
+        channel = nil
+    }
+    
+    func startCast(videoPlayerViewModel: VideoPlayerViewModel) {
+        guard let device = selectedDevice else { return }
+        self.currentVideoPlayerViewModel = videoPlayerViewModel
+        sessionManager.startSession(with: device)
     }
     
     private func setupCastLogging() {
@@ -65,8 +76,28 @@ final class ChromecastManager: NSObject {
         GCKLogger.sharedInstance().filter = logFilter
         GCKLogger.sharedInstance().delegate = self
     }
+    
+    func sendCastCommand(command: String, options: [String: Any]) {
+        let payload: [String: Any] = [
+            "options": options,
+            "command": command,
+            "userId": SessionManager.main.currentLogin.user.id,
+            "deviceId": UIDevice.current.name,
+            "accessToken": SessionManager.main.currentLogin.user.accessToken,
+            "serverAddress": SessionManager.main.currentLogin.server.currentURI,
+            "serverId": SessionManager.main.currentLogin.server.id,
+            "serverVersion": SessionManager.main.currentLogin.server.version,
+            "receiverName": ChromecastManager.main.sessionManager.currentCastSession?.device.friendlyName ?? "",
+            "subtitleBurnIn": false
+        ]
+        
+        let jsonData = JSON(payload)
+
+        channel?.sendTextMessage(jsonData.rawString() ?? "", error: nil)
+    }
 }
 
+// MARK: GCKDiscoveryManagerListener
 extension ChromecastManager: GCKDiscoveryManagerListener {
     
     func didUpdateDeviceList() {
@@ -90,11 +121,27 @@ extension ChromecastManager: GCKDiscoveryManagerListener {
 }
 
 extension ChromecastManager: GCKSessionManagerListener {
-    func sessionManager(_ sessionManager: GCKSessionManager, didStart session: GCKCastSession) {
-        print("started session")
+    
+    func sessionManager(_ sessionManager: GCKSessionManager, willStart session: GCKCastSession) {
+        print("WILL START SESSION CHROMECASTMANAGER")
+    }
+    
+    func sessionManager(_ sessionManager: GCKSessionManager, willEnd session: GCKSession) {
+        print("WILL END SESSION CHROMECASTMANAGER")
     }
 }
 
+extension ChromecastManager: GCKRemoteMediaClientListener {
+    
+}
+
+extension ChromecastManager: GCKGenericChannelDelegate {
+    func cast(_ channel: GCKGenericChannel, didReceiveTextMessage message: String, withNamespace protocolNamespace: String) {
+        
+    }
+}
+
+// MARK: GCKLoggerDelegate
 extension ChromecastManager: GCKLoggerDelegate {
     func logMessage(_ message: String,
                   at level: GCKLoggerLevel,

@@ -15,6 +15,8 @@ struct CastSelectorView: View {
     var castSelectorRouter: CastSelectorCoordinator.Router
     @State
     private var devices: [GCKDevice] = []
+    @State
+    private var currentSelectedDevice: GCKDevice?
     
     var body: some View {
         Group {
@@ -22,7 +24,20 @@ struct CastSelectorView: View {
                 Text("No devices found")
             } else {
                 List(devices, id: \.self) { device in
-                    Text(device.friendlyName ?? "No name")
+                    if let currentSelectedDevice = currentSelectedDevice,
+                       currentSelectedDevice.deviceID == device.deviceID {
+                        Button {
+                            ChromecastManager.main.stopCast()
+                        } label: {
+                            Label(device.friendlyName ?? "No Name", systemImage: "checkmark")
+                        }
+                    } else {
+                        Button {
+                            ChromecastManager.main.select(device: device)
+                        } label: {
+                            Text(device.friendlyName ?? "No Name")
+                        }
+                    }
                 }
             }
         }
@@ -39,8 +54,12 @@ struct CastSelectorView: View {
         .onChange(of: ChromecastManager.main.currentDevices) { newValue in
             devices = newValue
         }
+        .onChange(of: ChromecastManager.main.selectedDevice, perform: { newValue in
+            currentSelectedDevice = newValue
+        })
         .onAppear {
             devices = ChromecastManager.main.currentDevices
+            currentSelectedDevice = ChromecastManager.main.selectedDevice
         }
     }
 }
