@@ -1,6 +1,6 @@
 <div align="center">
   <img alt="Swiftfin" height="125" src="./Swiftfin/Assets.xcassets/jellyfin-blob-blue.imageset/jellyfin-blob.svg">
-
+ 
   <h1>Swiftfin</h1>
   <a href="https://translate.jellyfin.org/engage/swiftfin/">
     <img src="https://translate.jellyfin.org/widgets/swiftfin/-/svg-badge.svg"/>
