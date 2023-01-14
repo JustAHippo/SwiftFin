@@ -2,12 +2,12 @@ name: "Build 🔨"
 
 on:
   push:
-    branches: [ main ]
+    branches: [ refactor-video-playback ]
   pull_request:
     types:
       - synchronize
       - ready_for_review
-    branches: [ main ]
+    branches: [ refactor-video-playback ]
   workflow_dispatch: 
 jobs:
   build:
