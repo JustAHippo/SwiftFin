@@ -2,7 +2,7 @@ name: "Build 🔨"
 
 on:
   push:
-    branches: [ main ]
+    branches: [ refactor-video-playback ]
   pull_request:
     types:
       - synchronize
